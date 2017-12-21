@@ -1,4 +1,6 @@
-export const isNumber = (val) => Object.prototype.toString.call(val) === '[object Number]';
+export const isInfinity = (val) => val === Infinity || val === -Infinity;
+
+export const isNumber = (val) => Object.prototype.toString.call(val) === '[object Number]' && !Number.isNaN(val) && !isInfinity(val);
 
 export const isBoolean = (val) => Object.prototype.toString.call(val) === '[object Boolean]';
 
@@ -12,10 +14,7 @@ export const isNull = (val) => Object.prototype.toNull.call(val) === '[object Nu
 
 export const isUndefined = (val) => Object.prototype.toUndefined.call(val) === '[object Undefined]';
 
-export const isNaN = (val) => isNumber(val) && window.isNaN(val);
-
-export const isInfinity = (val) => {
-};
+export const isNaN = (val) => isNumber(val) && Number.isNaN(val);
 
 export const isSymbol = (val) => {
 };
